@@ -18,6 +18,7 @@ $ go install github.com/hawx/img-ext/img-databend
 $ img databend < input.bmp > output.bmp
 ```
 
+![](http://hawx.github.com/img-ext/databend.jpg)
 
 
 [img]: http://github.com/hawx/img
