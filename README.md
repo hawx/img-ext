@@ -32,7 +32,7 @@ $ img wlsn < input.png > output.png
 
 Named for Richard Wilson, creator of ["Turning the Place Over"][turning].
 
-![](http://hawx.github.com/img-ext/wilson.jpg)
+![](http://hawx.github.com/img-ext/wlsn.jpg)
 
 [img]: http://github.com/hawx/img
 [turning]: http://www.richardwilsonsculptor.com/projects/turning_the%20_place_over.html
