@@ -21,4 +21,18 @@ $ img databend < input.bmp > output.bmp
 ![](http://hawx.github.com/img-ext/databend.jpg)
 
 
+## img wlsn
+
+Install and use like,
+
+``` bash
+$ go install github.com/hawx/img-ext/img-wlsn
+$ img wlsn < input.png > output.png
+```
+
+Named for Richard Wilson, creator of ["Turning the Place Over"][turning].
+
+![](http://hawx.github.com/img-ext/wilson.jpg)
+
 [img]: http://github.com/hawx/img
+[turning]: http://www.richardwilsonsculptor.com/projects/turning_the%20_place_over.html
