@@ -34,5 +34,18 @@ Named for Richard Wilson, creator of ["Turning the Place Over"][turning].
 
 ![](http://hawx.github.com/img-ext/wlsn.jpg)
 
+
+## img timeslice
+
+Install and use like,
+
+``` bash
+$ go install github.com/hawx/img-ext/img-timeslice
+$ img timeslice photos/* > output.png
+```
+
+![](http://hawx.github.com/img-ext/timeslice.jpg)
+
+
 [img]: http://github.com/hawx/img
 [turning]: http://www.richardwilsonsculptor.com/projects/turning_the%20_place_over.html
