@@ -47,5 +47,20 @@ $ img timeslice photos/* > output.png
 ![](http://hawx.github.com/img-ext/timeslice.jpg)
 
 
-[img]: http://github.com/hawx/img
+## img lomo
+
+Install and use like,
+
+```bash
+$ go install github.com/hawx/img-ext/img-lomo
+$ img lomo < input.png > output.png
+```
+
+Based on [Lomography, UNIX Style][lomo].
+
+![](http://hawx.github.com/img-ext/lomo.jpg)
+
+
+[img]:     http://github.com/hawx/img
 [turning]: http://www.richardwilsonsculptor.com/projects/turning_the%20_place_over.html
+[lomo]:    http://the.taoofmac.com/space/blog/2005/08/23/2359
