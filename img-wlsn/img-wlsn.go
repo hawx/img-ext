@@ -7,6 +7,7 @@ import (
 	"flag"
 	"fmt"
 	"image"
+	"os"
 )
 
 const DEFAULT_SCALE = 0.66
@@ -32,7 +33,7 @@ func min(x,y int) int {
 }
 
 func run(scale float64) {
-	img := utils.ReadStdin()
+	img, data := utils.ReadStdin()
 
 	b := img.Bounds()
 	s := int(float64(min(b.Dx(), b.Dy())) * scale)
@@ -40,7 +41,7 @@ func run(scale float64) {
 	crc := crop.Circle(img, s, utils.Centre)
 	img  = blend.Normal(img, flip(crc))
 
-	utils.WriteStdout(img)
+	utils.WriteStdout(img, data)
 }
 
 func main() {
@@ -52,6 +53,7 @@ func main() {
 		scale = flag.Float64("scale", DEFAULT_SCALE, "")
 	)
 
+	os.Args = utils.GetOutput(os.Args)
 	flag.Parse()
 
 	if *long {

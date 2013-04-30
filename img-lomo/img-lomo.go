@@ -13,6 +13,7 @@ import (
 	"fmt"
 	"image"
 	"image/color"
+	"os"
 )
 
 func maskFor(in image.Image) image.Image {
@@ -50,10 +51,13 @@ func maskFor(in image.Image) image.Image {
 }
 
 func main() {
-	var long  = flag.Bool("long", false, "")
-	var short = flag.Bool("short", false, "")
-	var usage = flag.Bool("usage", false, "")
+	var (
+		long  = flag.Bool("long", false, "")
+		short = flag.Bool("short", false, "")
+		usage = flag.Bool("usage", false, "")
+	)
 
+	os.Args = utils.GetOutput(os.Args)
 	flag.Parse()
 
 	if *long {
@@ -69,13 +73,13 @@ func main() {
 		fmt.Println("lomo [options]")
 
 	} else {
-		img := utils.ReadStdin()
+		img, data := utils.ReadStdin()
 
 		// http://the.taoofmac.com/space/blog/2005/08/23/2359
 		img = contrast.Adjust(img, 1.2)
 		img = channel.Adjust(img, utils.Multiplier(1.2), channel.Saturation)
 		img = blend.Multiply(img, maskFor(img))
 
-		utils.WriteStdout(img)
+		utils.WriteStdout(img, data)
 	}
 }

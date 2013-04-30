@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/hawx/img/exif"
 	"github.com/hawx/img/utils"
 	"flag"
 	"fmt"
@@ -18,6 +19,7 @@ func run(paths []string) {
 		log.Fatal("Require 2 or more images")
 	}
 
+	var data *exif.Exif
 	images := make([]image.Image, len(paths))
 
 	for i, path := range paths {
@@ -32,6 +34,11 @@ func run(paths []string) {
 		m, _, err := image.Decode(file)
 		if err != nil {
 			log.Fatal(path, "\n", err)
+		}
+
+		if i == 0 {
+			file.Seek(0, 0)
+			data = exif.Decode(file)
 		}
 
 		images[i] = m
@@ -56,7 +63,7 @@ func run(paths []string) {
 		}
 	}
 
-	utils.WriteStdout(out)
+	utils.WriteStdout(out, data)
 }
 
 func main() {
@@ -66,6 +73,7 @@ func main() {
 		usage = flag.Bool("usage", false, "")
 	)
 
+	os.Args = utils.GetOutput(os.Args)
 	flag.Parse()
 
 	if *long {

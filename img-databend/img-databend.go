@@ -2,6 +2,7 @@
 package main
 
 import (
+	"github.com/hawx/img/utils"
 	"flag"
 	"fmt"
 	"io/ioutil"
@@ -45,6 +46,7 @@ func main() {
 		skip  = flag.Int("skip", DEFAULT_SKIP, "")
 	)
 
+	os.Args = utils.GetOutput(os.Args)
 	flag.Parse()
 
 	if *long {
