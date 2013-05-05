@@ -32,14 +32,17 @@ func min(x,y int) int {
 	return x
 }
 
-func run(scale float64) {
+type Cropper func(image.Image, int, utils.Direction) image.Image
+
+func run(scale float64, f Cropper) {
 	img, data := utils.ReadStdin()
 
 	b := img.Bounds()
 	s := int(float64(min(b.Dx(), b.Dy())) * scale)
 
-	crc := crop.Circle(img, s, utils.Centre)
-	img  = blend.Normal(img, flip(crc))
+	inner := f(img, s, utils.Centre)
+
+	img = blend.Normal(img, flip(inner))
 
 	utils.WriteStdout(img, data)
 }
@@ -51,17 +54,29 @@ func main() {
 		usage = flag.Bool("usage", false, "")
 
 		scale = flag.Float64("scale", DEFAULT_SCALE, "")
+
+		triangle = flag.Bool("triangle", false, "")
+		square   = flag.Bool("square",   false, "")
 	)
 
 	os.Args = utils.GetOutput(os.Args)
 	flag.Parse()
+
+	f := crop.Circle
+	if *triangle {
+		f = crop.Triangle
+	} else if *square {
+		f = crop.Square
+	}
 
 	if *long {
 		fmt.Println(
 			"  Flips a central circle of the image (size of which can be controlled\n" +
 			"  with the --scale flag), and overlays it on the original image.\n" +
 			"  \n" +
-			"    --scale <n>     # Scale factor for central circle (default: 0.66)",
+			"    --scale <n>     # Scale factor for central circle (default: 0.66)\n" +
+		  "    --triangle      # Use a triangle instead\n" +
+			"    --square        # Use a square instead",
 		)
 
 	} else if *short {
@@ -71,6 +86,6 @@ func main() {
 		fmt.Println("wlsn [options]")
 
 	} else {
-		run(*scale)
+		run(*scale, f)
 	}
 }
