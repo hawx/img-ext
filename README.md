@@ -8,13 +8,18 @@ to put a `-` between `img` and their name, for instance run `$ img-databend`
 instead of `$ img databend`. The only negative is that you will not be able to
 display help for the command.
 
+Get the package with,
+
+``` bash
+$ go get hawx.me/code/img-ext
+```
 
 ## img databend
 
 Install and use like,
 
 ``` bash
-$ go install github.com/hawx/img-ext/img-databend
+$ go install hawx.me/code/img-ext/img-databend
 $ img databend < input.bmp > output.bmp
 ```
 
@@ -26,7 +31,7 @@ $ img databend < input.bmp > output.bmp
 Install and use like,
 
 ``` bash
-$ go install github.com/hawx/img-ext/img-wlsn
+$ go install hawx.me/code/img-ext/img-wlsn
 $ img wlsn < input.png > output.png
 ```
 
@@ -40,7 +45,7 @@ Named for Richard Wilson, creator of ["Turning the Place Over"][turning].
 Install and use like,
 
 ``` bash
-$ go install github.com/hawx/img-ext/img-timeslice
+$ go install hawx.me/code/img-ext/img-timeslice
 $ img timeslice photos/* > output.png
 ```
 
@@ -52,7 +57,7 @@ $ img timeslice photos/* > output.png
 Install and use like,
 
 ```bash
-$ go install github.com/hawx/img-ext/img-lomo
+$ go install hawx.me/code/img-ext/img-lomo
 $ img lomo < input.png > output.png
 ```
 
@@ -61,6 +66,6 @@ Based on [Lomography, UNIX Style][lomo].
 ![](http://hawx.github.com/img-ext/lomo.jpg)
 
 
-[img]:     http://github.com/hawx/img
+[img]:     http://hawx.me/code/img
 [turning]: http://www.richardwilsonsculptor.com/projects/turning_the%20_place_over.html
 [lomo]:    http://the.taoofmac.com/space/blog/2005/08/23/2359
