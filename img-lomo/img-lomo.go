@@ -1,26 +1,25 @@
 package main
 
 import (
-	"code.google.com/p/graphics-go/graphics"
-	"github.com/nfnt/resize"
-
-	"github.com/hawx/img/blend"
-	"github.com/hawx/img/channel"
-	"github.com/hawx/img/contrast"
-	"github.com/hawx/img/utils"
-
 	"flag"
 	"fmt"
 	"image"
 	"image/color"
 	"os"
+
+	"code.google.com/p/graphics-go/graphics"
+	"github.com/nfnt/resize"
+	"hawx.me/code/img/blend"
+	"hawx.me/code/img/channel"
+	"hawx.me/code/img/contrast"
+	"hawx.me/code/img/utils"
 )
 
 func maskFor(in image.Image) image.Image {
 	b := in.Bounds()
 
 	// thumb size, corresponds to first convert command
-	thumbWidth  := int(b.Dx() / 5)
+	thumbWidth := int(b.Dx() / 5)
 	thumbHeight := int(b.Dy() / 5)
 
 	thumb := image.NewRGBA(image.Rect(0, 0, thumbWidth, thumbHeight))
@@ -63,7 +62,7 @@ func main() {
 	if *long {
 		fmt.Println(
 			"  Applies a simple lomo effect to the image, boosting its saturation and\n" +
-			"  composing with a black edged mask.",
+				"  composing with a black edged mask.",
 		)
 
 	} else if *short {

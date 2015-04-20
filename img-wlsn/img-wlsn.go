@@ -1,13 +1,14 @@
 package main
 
 import (
-	"github.com/hawx/img/blend"
-	"github.com/hawx/img/crop"
-	"github.com/hawx/img/utils"
 	"flag"
 	"fmt"
 	"image"
 	"os"
+
+	"hawx.me/code/img/blend"
+	"hawx.me/code/img/crop"
+	"hawx.me/code/img/utils"
 )
 
 const DEFAULT_SCALE = 0.66
@@ -27,8 +28,10 @@ func flip(img image.Image) image.Image {
 	return o
 }
 
-func min(x,y int) int {
-	if x > y { return y }
+func min(x, y int) int {
+	if x > y {
+		return y
+	}
 	return x
 }
 
@@ -49,14 +52,14 @@ func run(scale float64, f Cropper) {
 
 func main() {
 	var (
-		long  = flag.Bool("long",  false, "")
+		long  = flag.Bool("long", false, "")
 		short = flag.Bool("short", false, "")
 		usage = flag.Bool("usage", false, "")
 
 		scale = flag.Float64("scale", DEFAULT_SCALE, "")
 
 		triangle = flag.Bool("triangle", false, "")
-		square   = flag.Bool("square",   false, "")
+		square   = flag.Bool("square", false, "")
 	)
 
 	os.Args = utils.GetOutput(os.Args)
@@ -72,11 +75,11 @@ func main() {
 	if *long {
 		fmt.Println(
 			"  Flips a central circle of the image (size of which can be controlled\n" +
-			"  with the --scale flag), and overlays it on the original image.\n" +
-			"  \n" +
-			"    --scale <n>     # Scale factor for central circle (default: 0.66)\n" +
-		  "    --triangle      # Use a triangle instead\n" +
-			"    --square        # Use a square instead",
+				"  with the --scale flag), and overlays it on the original image.\n" +
+				"  \n" +
+				"    --scale <n>     # Scale factor for central circle (default: 0.66)\n" +
+				"    --triangle      # Use a triangle instead\n" +
+				"    --square        # Use a square instead",
 		)
 
 	} else if *short {

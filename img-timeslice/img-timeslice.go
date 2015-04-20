@@ -1,17 +1,17 @@
 package main
 
 import (
-	"github.com/hawx/img/exif"
-	"github.com/hawx/img/utils"
 	"flag"
 	"fmt"
 	"image"
-	"os"
-	"log"
-
-	_ "image/jpeg"
 	_ "image/gif"
+	_ "image/jpeg"
 	_ "image/png"
+	"log"
+	"os"
+
+	"hawx.me/code/img/exif"
+	"hawx.me/code/img/utils"
 )
 
 func run(paths []string) {
@@ -53,11 +53,11 @@ func run(paths []string) {
 	width := bounds.Dx() / len(images)
 
 	out := image.NewRGBA(image.Rect(
-		bounds.Min.X, bounds.Min.Y, bounds.Min.X + (len(images) * width), bounds.Max.Y,
+		bounds.Min.X, bounds.Min.Y, bounds.Min.X+(len(images)*width), bounds.Max.Y,
 	))
 
 	for y := bounds.Min.Y; y < bounds.Max.Y; y++ {
-		for x := bounds.Min.X; x < bounds.Min.X + (len(images) * width); x++ {
+		for x := bounds.Min.X; x < bounds.Min.X+(len(images)*width); x++ {
 			col := x / width
 			out.Set(x, y, images[col].At(x, y))
 		}
@@ -68,7 +68,7 @@ func run(paths []string) {
 
 func main() {
 	var (
-		long  = flag.Bool("long",  false, "")
+		long  = flag.Bool("long", false, "")
 		short = flag.Bool("short", false, "")
 		usage = flag.Bool("usage", false, "")
 	)
@@ -79,12 +79,12 @@ func main() {
 	if *long {
 		fmt.Println(
 			"  Take equal sized slices from a list of images, and glue them together.\n" +
-			"  This can be used to create a not-a-timelapse type effect when used with\n" +
-			"  photos of the same subject, taken over the course of a month (for instance).\n" +
-			"  \n" +
-			"  Unlike other img tools, this takes a list of filenames, for instance,\n" +
-			"  \n" +
-			"    img timelapse Trees/photo-*.png > output.png",
+				"  This can be used to create a not-a-timelapse type effect when used with\n" +
+				"  photos of the same subject, taken over the course of a month (for instance).\n" +
+				"  \n" +
+				"  Unlike other img tools, this takes a list of filenames, for instance,\n" +
+				"  \n" +
+				"    img timelapse Trees/photo-*.png > output.png",
 		)
 
 	} else if *short {
